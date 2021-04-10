@@ -35,53 +35,29 @@
     font-feature-settings: 'liga';
   }
 
-  body {
-    background-repeat: no-repeat;
-    background-color: #EEEEEE;
-    color: #fff;
-  }
-  
-  .navbar-laravel {
-    background-color: #000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  }
-  
-  .navbar-brand {
-    color: #fff !important;
-  }
-  
-  .nav-link {
-    color: #fff !important;
-  }
-  
-  .table-dark {
-    color: #fff;
-  }
-  
-  .list-group-item {
-    border-color: #fff;
-    background-color: #000;
-  }
-  
-  .login-box {
-    background-color: #fff;
-    color: #000000;
-  }
-  
-  .login-header {
-    background-color: rgba(0, 0, 0, 0);
-  }
-  
-  .login-body {
-    background-color: rgba(0, 0, 0, 0.25);
-  }
-  
-  .container .row {
-    color: #000000;
-  }
-  
-  .comment-link {
-    color: black;
-  }
-  
-  
+/* 共通 */
+html {
+  font-size: 62.5%;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  color: #222;
+  font-family: 'Noto Sans JP', sans-serif, 'Noto Serif JP', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  -webkit-font-feature-settings: "palt";
+          font-feature-settings: "palt";
+  letter-spacing: 0.025em;
+  width: 1120px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* div {
+  display: inline;
+} */
