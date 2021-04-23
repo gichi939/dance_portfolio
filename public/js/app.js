@@ -49612,6 +49612,8 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./like.js */ "./resources/js/like.js");
+
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * The following block of code may be used to automatically register your
@@ -49747,6 +49749,55 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/like.js":
+/*!******************************!*\
+  !*** ./resources/js/like.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  var like = $('.like-toggle'); //like-toggleのついたiタグを取得し代入。
+
+  console.log(like);
+  var likepostId; //変数を宣言（なんでここで？）
+
+  like.on('click', function () {
+    //onはイベントハンドラー
+    var $this = $(this); //this=イベントの発火した要素＝iタグを代入
+
+    likepostId = $this.data('post-id'); //iタグに仕込んだdata-post-idの値を取得
+    //ajax処理スタート
+
+    $.ajax({
+      headers: {
+        //HTTPヘッダ情報をヘッダ名と値のマップで記述
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      //↑name属性がcsrf-tokenのmetaタグのcontent属性の値を取得
+      url: '/like',
+      //通信先アドレスで、このURLをあとでルートで設定します
+      method: 'POST',
+      //HTTPメソッドの種別を指定します。1.9.0以前の場合はtype:を使用。
+      data: {
+        //サーバーに送信するデータ
+        'post_id': likepostId //いいねされた投稿のidを送る
+
+      }
+    }) //通信成功した時の処理
+    .done(function (data) {
+      $this.toggleClass('liked'); //likedクラスのON/OFF切り替え。
+
+      $this.next('.like-counter').html(data.post_likes_count);
+    }) //通信失敗した時の処理
+    .fail(function () {
+      console.log('fail');
+    });
+  });
+});
 
 /***/ }),
 

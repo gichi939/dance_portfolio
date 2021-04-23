@@ -18,13 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', 'DevelopController@show');
+// Route::get('/', 'DevelopController@show');
 
 Route::group(['middleware' => 'auth'], function() {
+Route::get('/', 'PostController@index');
+Route::get('/', 'DevelopController@show')->name('post.show');
 Route::get('/post/like/{id}', 'DevelopController@like')->name('post.like');
 Route::get('/post/unlike/{id}', 'DevelopController@unlike')->name('post.unlike');
 Route::get('/post/create', 'postController@post_show')->name('post.show');
 Route::post('/post/create', 'postController@post_create')->name('post.create');
+// Route::post('ajaxlike', 'PostController@ajaxlike')->name('.ajaxlikpostse');
+Route::post('/like', 'PostController@like')->name('reviews.like');
 });
 
 Auth::routes();

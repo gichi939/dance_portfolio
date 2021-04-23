@@ -39,6 +39,7 @@
 html {
   font-size: 62.5%;
   font-family: 'Noto Sans JP', sans-serif;
+  width: 100%;
 }
 
 a {
@@ -53,11 +54,26 @@ body {
   -webkit-font-feature-settings: "palt";
           font-feature-settings: "palt";
   letter-spacing: 0.025em;
-  width: 1120px;
   overflow: hidden;
   margin: 0 auto;
 }
 
-/* div {
-  display: inline;
-} */
+.liked {
+  color: pink;
+}
+
+/* hedder */
+.navbar {
+  height: 50px;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+}
+
+.create_link {
+  color: black;
+  font-size: 1.5rem;
+  margin-left: 3rem;
+}
+

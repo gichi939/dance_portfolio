@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('./like.js');
 
 window.Vue = require('vue');
 

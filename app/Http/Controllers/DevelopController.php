@@ -11,9 +11,11 @@ class DevelopController extends Controller
 {
     public function show() {
 
-        $posts = Post::all();
-        // dd($posts);
-        return view('top.index',['posts' => $posts]);
+      $posts = Post::withCount('likes')->orderBy('id', 'desc')->paginate(10);
+      $param = [
+          'posts' => $posts,
+      ];
+      return view('top.index', $param);
     }
 
     /**

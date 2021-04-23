@@ -15,10 +15,17 @@ class CreateLikesTable extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('post_id')->unsigned();
-            $table->integer('user_id')->unsigned();
             $table->timestamps();
-         });
+
+            $table->foreignId('user_id') //usersテーブルの外部キー設定
+                ->constrained() //userテーブルのidカラムを参照するconstrainedメソッド
+                ->onDelete('cascade'); //削除時のオプション
+
+            $table->foreignId('post_id') //同じことをreviewsテーブルとも
+                ->constrained()
+                ->onDelete('cascade');
+
+        });
     }
 
     /**
